@@ -8,19 +8,17 @@
   </head>
   <body>
     <div class="container">
-      <div id="messages"></div>
       <h1>R1 fvker</h1>
-      <textarea
-        id="message"
-        rows="4"
-        cols="50"
-        placeholder="Type your message here"
-      ></textarea>
-      <br />
-      <button onclick="sendMessage()">Send</button>
-      <p>Response Text:</p>
-      <div id="responseText"></div>
-      <button onclick="playAudio()">Play Audio</button><br />
+      <div id="messages"></div>
+    
+      <div class="button-container">
+        <input
+          id="message"
+          placeholder="Send a message"
+        ></input>
+
+        <button onclick="sendMessage()">Send</button>
+      </div>
       <audio id="audioPlayer" style="display: none"></audio>
     </div>
     <script src="script.js"></script>

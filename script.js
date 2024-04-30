@@ -1,5 +1,6 @@
 const socket = new WebSocket("wss://r1-api.rabbit.tech/session");
 const messages = [];
+const audioQueue = [];
 
 window.onload = () => {
   const token = localstorage.getItem("rabbitToken");
@@ -58,14 +59,13 @@ socket.onmessage = (event) => {
     const responseText = JSON.parse(
       response.kernel.assistantResponseDevice.text
     );
-    document.getElementById("responseText").innerText =
-      responseText.chars.join("");
+
     if (response.kernel.assistantResponseDevice.audio) {
       const audioData = response.kernel.assistantResponseDevice.audio;
-      const audioPlayer = document.getElementById("audioPlayer");
-      audioPlayer.src = "data:audio/wav;base64," + audioData;
-      audioPlayer.load();
-      audioPlayer.style.display = "inline-block";
+      audioQueue.push("data:audio/wav;base64," + audioData);
+      if (document.getElementById("audioPlayer").paused) {
+        playNextAudio();
+      }
     } else {
       document.getElementById("audioPlayer").style.display = "none";
     }
@@ -100,8 +100,20 @@ function sendMessage() {
     },
   };
   socket.send(JSON.stringify(userTextPayload));
+  messageInput.value = "";
 }
 
 function playAudio() {
   document.getElementById("audioPlayer").play();
+}
+
+function playNextAudio() {
+  if (audioQueue.length > 0) {
+    const audioPlayer = document.getElementById("audioPlayer");
+    audioPlayer.src = audioQueue.shift();
+    audioPlayer.load();
+    audioPlayer.play();
+    audioPlayer.style.display = "inline-block";
+    audioPlayer.onended = playNextAudio;
+  }
 }

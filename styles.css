@@ -16,40 +16,50 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-height: 400px;
 }
-textarea {
-  border-radius: 25px;
+input {
+  border-radius: 12px;
   background-color: rgba(45, 45, 45, 0.8);
   border: 1px solid transparent;
-  text-align: center;
+  text-align: left;
   color: white;
   font-family: monospace;
+  padding: 12px;
+  flex: 1;
 }
 button {
   background-color: rgba(45, 45, 45, 0.8);
-  border-radius: 25px;
+  border-radius: 12px;
   border: 1px solid transparent;
   color: white;
   font-family: monospace;
   padding: 5px;
-  margin-top: 5px;
   cursor: pointer;
   transition: all 0.3s;
-  width: 35%;
+  width: 100px;
+  padding: 12px;
 }
 button:hover {
   transform: scale(1.1);
 }
 
 #messages {
-  width: 400px;
+  width: 600px;
   display: flex;
   flex-direction: column;
+  min-height: 400px;
+  max-height: 400px;
+  background: #2a2a2a;
+  border-radius: 12px;
+  padding: 12px;
+  overflow: auto;
 }
 
 .message {
   padding: 12px;
-  background: #2a2a2a;
+  background: white;
+  color: black;
   border-radius: 12px;
   margin-top: 12px;
 }
@@ -61,4 +71,15 @@ button:hover {
   align-self: end;
   background-color: #ff4d06;
   color: white;
+  max-width: 300px;
+  text-align: end;
+}
+
+.button-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 600px;
+  margin-top: 24px;
 }
