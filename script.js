@@ -1,7 +1,17 @@
 const socket = new WebSocket("wss://r1-api.rabbit.tech/session");
 
+window.onload = () => {
+  const token = prompt("Please enter your Rabbit token:");
+  if (token) {
+    localStorage.setItem("rabbitToken", token);
+  } else {
+    alert("No token provided. Reload the page and try again.");
+  }
+};
+
 socket.onopen = () => {
   console.log("WebSocket connection opened");
+  const token = localStorage.getItem("rabbitToken");
   const authPayload = {
     global: {
       initialize: {
@@ -12,7 +22,7 @@ socket.onopen = () => {
         listening: true,
         mimeType: "wav",
         timeZone: "America/Los_Angeles",
-        token: "rabbit-account-key+9f22b4de044f8eeb819fe96b8f6299aa",
+        token: token,
       },
     },
   };
