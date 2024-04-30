@@ -3,7 +3,7 @@ const messages = [];
 const audioQueue = [];
 
 window.onload = () => {
-  const token = localstorage.getItem("rabbitToken");
+  const token = localStorage.getItem("rabbitToken");
   if (!token) {
     token = prompt("Please enter your Rabbit token:");
   }
