@@ -27,7 +27,7 @@ socket.onopen = () => {
         listening: true,
         mimeType: "wav",
         timeZone: "America/Los_Angeles",
-        token: token,
+        token: "rabbit-account-key+9f22b4de044f8eeb819fe96b8f6299aa",
       },
     },
   };
