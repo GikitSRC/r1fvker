@@ -29,8 +29,7 @@ socket.onmessage = (event) => {
     document.getElementById("responseText").innerText =
       responseText.chars.join("");
     if (response.kernel.assistantResponseDevice.audio) {
-      const audioData =
-        response.kernel.assistantResponseDevice.audio.split(",")[1];
+      const audioData = response.kernel.assistantResponseDevice.audio;
       const audioPlayer = document.getElementById("audioPlayer");
       audioPlayer.src = "data:audio/wav;base64," + audioData;
       audioPlayer.load();
