@@ -10,7 +10,7 @@ window.onload = () => {
   if (token) {
     localStorage.setItem("rabbitToken", token);
   } else {
-    alert("No token provided. Reload the page and try again.");
+    // alert("No token provided. Reload the page and try again.");
   }
 };
 
