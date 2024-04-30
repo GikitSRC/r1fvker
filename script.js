@@ -3,7 +3,7 @@ const messages = [];
 const audioQueue = [];
 
 window.onload = () => {
-  const token = localStorage.getItem("rabbitToken");
+  token = localStorage.getItem("rabbitToken");
   if (!token) {
     token = prompt("Please enter your Rabbit token:");
   }
@@ -121,7 +121,7 @@ document
   .getElementById("message")
   .addEventListener("keypress", function (event) {
     if (event.key === "Enter") {
-      event.preventDefault(); // Prevent the default action to stop from submitting the form
+      event.preventDefault();
       sendMessage();
       document.getElementById("message").value = "";
     }
