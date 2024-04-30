@@ -1,4 +1,5 @@
 const socket = new WebSocket("wss://r1-api.rabbit.tech/session");
+const messages = [];
 
 window.onload = () => {
   const token = localstorage.getItem("rabbitToken");
@@ -32,9 +33,27 @@ socket.onopen = () => {
   socket.send(JSON.stringify(authPayload));
 };
 
+const updateMessages = () => {
+  const messagesDiv = document.getElementById("messages");
+  messagesDiv.innerHTML = "";
+  messages.forEach((message) => {
+    const messageDiv = document.createElement("div");
+    messageDiv.classList.add("message");
+    messageDiv.classList.add(message.user);
+    messageDiv.innerText = message.text;
+    messagesDiv.appendChild(messageDiv);
+  });
+};
+
 socket.onmessage = (event) => {
-  console.log("Message received:", event.data);
+  //   console.log("Message received:", event.data);
   const response = JSON.parse(event.data);
+  if (response && response.kernel && response.kernel.assistantResponse) {
+    messages.push({
+      text: response.kernel.assistantResponse,
+      user: "rabbit",
+    });
+  }
   if (response && response.kernel && response.kernel.assistantResponseDevice) {
     const responseText = JSON.parse(
       response.kernel.assistantResponseDevice.text
@@ -51,6 +70,8 @@ socket.onmessage = (event) => {
       document.getElementById("audioPlayer").style.display = "none";
     }
   }
+  updateMessages();
+  console.log(messages);
 };
 
 socket.onerror = (error) => {
@@ -67,6 +88,10 @@ function sendMessage() {
     alert("Please enter a message.");
     return;
   }
+  messages.push({
+    text: messageInput,
+    user: "me",
+  });
   const userTextPayload = {
     kernel: {
       userText: {
