@@ -82,10 +82,11 @@ button:hover {
   color: black;
   border-radius: 12px;
   margin-top: 12px;
+  word-break: break-word;
 }
 
 .message.me {
-  align-self: start;
+  text-align: left;
 }
 .message.rabbit {
   align-self: end;
