@@ -8,18 +8,20 @@
   </head>
   <body>
     <div class="container">
-      <h1>R1 fvker</h1>
-      <div id="messages"></div>
-    
-      <div class="button-container">
-        <input
-          id="message"
-          placeholder="Send a message"
-        ></input>
+      <div class="inner">
+        <h1>R1 fvker</h1>
+        <div id="messages"></div>
+      
+        <div class="button-container">
+          <input
+            id="message"
+            placeholder="Send a message"
+          ></input>
 
-        <button onclick="sendMessage()">Send</button>
+          <button onclick="sendMessage()">Send</button>
+        </div>
+        <audio id="audioPlayer" style="display: none"></audio>
       </div>
-      <audio id="audioPlayer" style="display: none"></audio>
     </div>
     <script src="script.js"></script>
   </body>
