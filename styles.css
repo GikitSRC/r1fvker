@@ -1,0 +1,38 @@
+body {
+  text-align: center;
+  background-color: black;
+  color: white;
+  font-family: monospace;
+}
+.container {
+  padding: 15px;
+  border-radius: 25px;
+  background-color: rgba(40, 40, 40, 0.7);
+  height: 60%;
+  margin-top: 15%;
+  width: 80%;
+  margin-left: 10%;
+}
+textarea {
+  border-radius: 25px;
+  background-color: rgba(45, 45, 45, 0.8);
+  border: 1px solid transparent;
+  text-align: center;
+  color: white;
+  font-family: monospace;
+}
+button {
+  background-color: rgba(45, 45, 45, 0.8);
+  border-radius: 25px;
+  border: 1px solid transparent;
+  color: white;
+  font-family: monospace;
+  padding: 5px;
+  margin-top: 5px;
+  cursor: pointer;
+  transition: all 0.3s;
+  width: 35%;
+}
+button:hover {
+  transform: scale(1.1);
+}
