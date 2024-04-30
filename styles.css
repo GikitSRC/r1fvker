@@ -87,6 +87,7 @@ button:hover {
 
 .message.me {
   text-align: left;
+  align-self: start;
 }
 .message.rabbit {
   align-self: end;
