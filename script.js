@@ -37,13 +37,17 @@ socket.onopen = () => {
 const updateMessages = () => {
   const messagesDiv = document.getElementById("messages");
   messagesDiv.innerHTML = "";
-  messages.forEach((message) => {
+  messages.forEach((message, index) => {
     const messageDiv = document.createElement("div");
     messageDiv.classList.add("message");
     messageDiv.classList.add(message.user);
     messageDiv.innerText = message.text;
     messagesDiv.appendChild(messageDiv);
+    if (index === messages.length - 1) {
+      messageDiv.style.marginBottom = "12px";
+    }
   });
+  messagesDiv.scrollTop = messagesDiv.scrollHeight;
 };
 
 socket.onmessage = (event) => {
