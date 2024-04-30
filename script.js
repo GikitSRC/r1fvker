@@ -1,7 +1,10 @@
 const socket = new WebSocket("wss://r1-api.rabbit.tech/session");
 
 window.onload = () => {
-  const token = prompt("Please enter your Rabbit token:");
+  const token = localstorage.getItem("rabbitToken");
+  if (!token) {
+    token = prompt("Please enter your Rabbit token:");
+  }
   if (token) {
     localStorage.setItem("rabbitToken", token);
   } else {
