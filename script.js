@@ -117,3 +117,12 @@ function playNextAudio() {
     audioPlayer.onended = playNextAudio;
   }
 }
+document
+  .getElementById("message")
+  .addEventListener("keypress", function (event) {
+    if (event.key === "Enter") {
+      event.preventDefault(); // Prevent the default action to stop from submitting the form
+      sendMessage();
+      document.getElementById("message").value = "";
+    }
+  });
