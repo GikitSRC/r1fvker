@@ -5,7 +5,7 @@ const audioQueue = [];
 window.onload = () => {
   token = localStorage.getItem("rabbitToken");
   if (!token) {
-    token = prompt("Please enter your Rabbit token:");
+    // token = prompt("Please enter your Rabbit token:");
   }
   if (token) {
     localStorage.setItem("rabbitToken", token);
